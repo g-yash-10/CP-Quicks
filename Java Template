@@ -1,6 +1,6 @@
 import java.util.*;
 
-class GFG {
+public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void solve()
     {
