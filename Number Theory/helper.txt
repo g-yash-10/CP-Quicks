@@ -17,3 +17,18 @@ static int gcd(int a, int b){
 static int lcm(int a, int b){
         return (a / gcd(a, b)) * b;
 }
+
+//O(n)
+static long binomialCoeff(int n, int k)
+    {
+        long res = 1;
+        if (k > n - k) {
+            k = n - k;
+        }
+        for (int i = 0; i < k; ++i) {
+            res *= (n - i);
+            res /= (i + 1);
+        }
+ 
+        return res;
+    }
