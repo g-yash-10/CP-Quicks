@@ -1,6 +1,15 @@
 import java.util.*;
 
 public class Main {
+    static class Pair{
+    	int key;
+	int val;
+	Pair(int aa, int bb)
+	{
+		key=aa;
+		val=bb;
+	}
+    }
     static Scanner sc = new Scanner(System.in);
     public static void solve()
     {
