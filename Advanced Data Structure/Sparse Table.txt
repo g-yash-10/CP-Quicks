@@ -2,6 +2,8 @@ import java.util.*;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
+    
+    //log function
     public static int log(int N, int n)
     {
         int ans = 0;
