@@ -1,0 +1,11 @@
+//smallest number greater than or equal to log N base n
+public static int log(int N, int n)
+    {
+        int ans = 0;
+        while(N>0)
+        {
+            N /= n;
+            ans++;
+        }
+        return ans;
+    }
