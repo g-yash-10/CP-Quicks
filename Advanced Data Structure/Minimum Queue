@@ -1,0 +1,29 @@
+    public static class Pair{
+        int fir;
+        int sec;
+        Pair(int a, int b)
+        {
+            fir=a;
+            sec=b;
+        }
+    }
+    static Deque<Pair> dq = new LinkedList<Pair>();
+    static int cnt_added = 0;
+    static int cnt_removed = 0;
+    public static void pushS(int val)
+    {
+        while(dq.size()!=0 && dq.getLast().fir > val )
+            dq.removeLast();
+        dq.offerLast(new Pair(val, cnt_added));
+        cnt_added++;
+    }
+    public static void popS()
+    {
+        if( dq.size()!=0 && dq.getFirst().sec == cnt_removed )
+            dq.removeFirst();
+        cnt_removed++;
+    }
+    public static int getMin()
+    {
+        return dq.getFirst().fir;
+    }
