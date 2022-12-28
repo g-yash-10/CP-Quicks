@@ -1,0 +1,19 @@
+    static Stack<Integer> stk = new Stack<Integer>();
+    static Stack<Integer> temp = new Stack<Integer>();
+    public static void pushS(int val)
+    {
+        if(stk.isEmpty() || val <= getMin())
+            temp.push(val);
+         stk.push(val);
+    }
+    public static void popS()
+    {
+        int x = stk.peek();
+        stk.pop();
+        if(x == getMin())
+            temp.pop();
+    }
+    public static int getMin()
+    {
+        return temp.peek();
+    }
