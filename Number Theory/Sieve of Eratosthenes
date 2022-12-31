@@ -1,0 +1,16 @@
+public static int NN = 100000;
+public static int isPrime[] = new int[NN];
+public static void prime(){
+        Arrays.fill(isPrime, 1);
+        isPrime[0]=isPrime[1]=0;
+        for(int i=2;i<N;i++)
+        {
+            if(isPrime[i]==1)
+            {
+                for(int j=2*i;j<N;j+=i)
+                {
+                    isPrime[j]=0;
+                }
+            }
+        }
+}
