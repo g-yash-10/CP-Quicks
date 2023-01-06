@@ -1,16 +1,35 @@
-public static int NN = 100000;
-public static int isPrime[] = new int[NN];
-public static void prime(){
-        Arrays.fill(isPrime, 1);
-        isPrime[0]=isPrime[1]=0;
-        for(int i=2;i<N;i++)
-        {
-            if(isPrime[i]==1)
-            {
-                for(int j=2*i;j<N;j+=i)
-                {
-                    isPrime[j]=0;
-                }
-            }
-        }
-}
+// Java program to find prime factorization of a
+// number n in O(Log n) time with precomputation
+// allowed.
+	static final int MAXN = 100001;
+	static int spf[] = new int[MAXN];
+	// Time Complexity : O(nloglogn)
+	static void sieve()
+	{
+		spf[1] = 1;
+		for (int i=2; i<MAXN; i++)
+			spf[i] = i;
+		for (int i=4; i<MAXN; i+=2)
+			spf[i] = 2;
+	
+		for (int i=3; i*i<MAXN; i++)
+		{
+			if (spf[i] == i)
+			{
+				// marking SPF for all numbers divisible by i
+				for (int j=i*i; j<MAXN; j+=i)
+					if (spf[j]==j)
+						spf[j] = i;
+			}
+		}
+	}
+	static Vector<Integer> getFactorization(int x)
+	{
+		Vector<Integer> ret = new Vector<>();
+		while (x != 1)
+		{
+			ret.add(spf[x]);
+			x = x / spf[x];
+		}
+		return ret;
+	}
