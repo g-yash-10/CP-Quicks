@@ -1,0 +1,39 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+
+class GFG {
+    int N = 1e5+2;
+    int sgt[] = new int[4*N];
+    static void build(int node, int st, int en, int arr[])
+    {
+        if(st == en)
+        {
+            sgt[node] = arr[st];
+            return;
+        }
+        int mid = ( st + en ) / 2;
+        build(2 * node, st, mid);
+        build(2 * node + 1, mid + 1, en);
+        sgt[node] = sgt[2 * node] + sgt[2 * node + 1];
+        
+    }
+    static int query(int node, int st, int en, int l, int r, int arr[])
+    {
+        if(st > r || en < l)
+        {
+            return 0;
+        }
+        else if(l <= st && en <= r)
+        {
+            return sgt[node];
+        }
+        int mid = (st + en) / 2;
+        int q1 = query(2*node, st, mid, l, r, arr);
+        int q2 = query(2*node + 1, mid + 1, en, l, r, arr);
+        return q1 + q2;
+    }
+	public static void main (String[] args) {
+		System.out.println("GfG!");
+	}
+}
