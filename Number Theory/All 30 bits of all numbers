@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Main {
+    static Scanner sc = new Scanner(System.in);
+    public static int[][] countBits(int arr[], int n)
+    {
+        int freq[][] = new int[n][30];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<30;j++)
+            {
+                if((arr[i]&(1<<j))>0)
+                    freq[i][j]++;
+            }
+        }
+        return freq;
+    }
+    public static void solve()
+    {
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i] = sc.nextInt();
+        }
+        int and = arr[0];
+        int freq[][] = countBits(arr, n);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<5;j++)
+                System.out.print(freq[i][j]+" ");
+            System.out.println();
+        }
+    }
+	public static void main (String[] args) {
+		int t = sc.nextInt();
+		while(t-->0)
+		    solve();
+	}
+}
