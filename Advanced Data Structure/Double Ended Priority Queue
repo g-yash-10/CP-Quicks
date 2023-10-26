@@ -1,0 +1,73 @@
+import java.util.Set;
+import java.util.TreeSet;
+
+public class DblEndedPQ {
+	Set<Integer> st;
+
+	DblEndedPQ() {
+		st = new TreeSet<>();
+	}
+
+	int size() {
+		return st.size();
+	}
+
+	boolean isEmpty() {
+		return (st.size() == 0);
+	}
+
+	void insert(int x) {
+		st.add(x);
+	}
+
+	int getMin() {
+		if (st.isEmpty()) {
+			return Integer.MIN_VALUE;
+		}
+		return st.iterator().next();
+	}
+
+	int getMax() {
+		if (st.isEmpty()) {
+			return Integer.MIN_VALUE;
+		}
+		return ((TreeSet<Integer>) st).last();
+	}
+
+	void deleteMin() {
+		if (st.size() == 0)
+			return;
+
+		st.remove(getMin());
+	}
+
+	void deleteMax() {
+		if (st.size() == 0)
+			return;
+
+		st.remove(getMax());
+	}
+
+	public static void main(String[] args) {
+		DblEndedPQ d = new DblEndedPQ();
+
+		d.insert(10);
+		d.insert(20);
+		d.insert(40);
+		d.insert(30);
+
+		System.out.println("Minimum Element is: " + d.getMin());
+		System.out.println("Maximum Element is: " + d.getMax());
+
+		d.deleteMin();
+		System.out.println("Minimum Element is: " + d.getMin());
+
+		d.deleteMax();
+		System.out.println("Maximum Element is: " + d.getMax());
+
+		System.out.println("Size of DblEndedPQ is: " + d.size());
+
+		System.out.println("Is DblEndedPQ empty: "
+				+ (d.isEmpty() ? "YES" : "NO"));
+	}
+}
