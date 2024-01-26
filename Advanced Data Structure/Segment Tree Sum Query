@@ -1,39 +1,30 @@
-/*package whatever //do not write package name here */
-
-import java.io.*;
-
-class GFG {
-    int N = 1e5+2;
-    int sgt[] = new int[4*N];
-    static void build(int node, int st, int en, int arr[])
+static int N = 200002;
+    static int sgtmin[] = new int[4*N];
+    static void buildMin(int node, int st, int en, int arr[])	//call build(0, 0, n-1, arr)
     {
         if(st == en)
         {
-            sgt[node] = arr[st];
+            sgtmin[node] = arr[st];
             return;
         }
         int mid = ( st + en ) / 2;
-        build(2 * node, st, mid);
-        build(2 * node + 1, mid + 1, en);
-        sgt[node] = sgt[2 * node] + sgt[2 * node + 1];
+        buildMin(2 * node + 1, st, mid, arr);
+         buildMin(2 * node + 2, mid + 1, en, arr);
+        sgtmin[node] =sgtmin[2 * node + 1] + sgtmin[2 * node + 2];
         
     }
-    static int query(int node, int st, int en, int l, int r, int arr[])
+    static int queryMin(int node, int st, int en, int l, int r, int arr[])	//call queryMin(0, 0, n-1, l, r, arr)
     {
         if(st > r || en < l)
         {
-            return 0;
+            return Integer.MAX_VALUE;
         }
         else if(l <= st && en <= r)
         {
-            return sgt[node];
+            return sgtmin[node];
         }
         int mid = (st + en) / 2;
-        int q1 = query(2*node, st, mid, l, r, arr);
-        int q2 = query(2*node + 1, mid + 1, en, l, r, arr);
+        int q1 = queryMin(2*node + 1, st, mid, l, r, arr);
+        int q2 = queryMin(2*node + 2, mid + 1, en, l, r, arr);
         return q1 + q2;
     }
-	public static void main (String[] args) {
-		System.out.println("GfG!");
-	}
-}
