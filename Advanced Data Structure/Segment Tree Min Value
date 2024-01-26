@@ -13,7 +13,7 @@ static int N = 200002;
         sgtmin[node] = Math.min(sgtmin[2 * node + 1], sgtmin[2 * node + 2]);
         
     }
-    static int queryMin(int node, int st, int en, int l, int r, int arr[])
+    static int queryMin(int node, int st, int en, int l, int r, int arr[])    //call queryMin(0, 0, n-1, l, r, arr)
     {
         if(st > r || en < l)
         {
