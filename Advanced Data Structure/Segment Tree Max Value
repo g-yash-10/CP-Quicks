@@ -1,1 +1,29 @@
-a
+static int sgtmax[] = new int[4*N];
+    static void buildMax(int node, int st, int en, int arr[])
+    {
+        if(st == en)
+        {
+            sgtmax[node] = arr[st];
+            return;
+        }
+        int mid = ( st + en ) / 2;
+        buildMax(2 * node + 1, st, mid, arr);
+         buildMax(2 * node + 2, mid + 1, en, arr);
+        sgtmax[node] = Math.max(sgtmax[2 * node + 1], sgtmax[2 * node + 2]);
+        
+    }
+    static int queryMax(int node, int st, int en, int l, int r, int arr[])  //call queryMax(0, 0, n-1, l, r, arr)
+    {
+        if(st > r || en < l)
+        {
+            return Integer.MIN_VALUE;
+        }
+        else if(l <= st && en <= r)
+        {
+            return sgtmax[node];
+        }
+        int mid = (st + en) / 2;
+        int q1 = queryMax(2*node + 1, st, mid, l, r, arr);
+        int q2 = queryMax(2*node + 2, mid + 1, en, l, r, arr);
+        return Math.max(q1, q2);
+    }
