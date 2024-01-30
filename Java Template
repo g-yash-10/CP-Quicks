@@ -4,10 +4,10 @@ public class Main {
     static class Pair{
     	int key;
 	int val;
-	Pair(int aa, int bb)
+	Pair(int key, int val)
 	{
-		key=aa;
-		val=bb;
+		this.key=key;
+		this.val=val;
 	}
     }
     public static class sort implements Comparator<Pair>{
@@ -22,15 +22,34 @@ public class Main {
         }
     }
     static Scanner sc = new Scanner(System.in);
-    public static int[] nextArray(int n) {
+    static int[] nextArray(int n) {
     	int arr[] = new int[n];
 	for(int i=0;i<n;i++)	arr[i] = sc.nextInt();
         return arr;
     }
-    public static long[] nextArrayL(int n) {
+    static long[] nextArrayL(int n) {
     	long arr[] = new long[n];
 	for(int i=0;i<n;i++)	arr[i] = sc.nextLong();
         return arr;
+    }
+    static void print(int arr[]) {
+        for(int it: arr)
+            System.out.print(it+" ");
+        System.out.println();
+    }
+    static void print(long arr[]) {
+        for(long it: arr)
+            System.out.print(it+" ");
+        System.out.println();
+    }
+    static void print(int a) {
+        System.out.println(a);
+    }
+    static void print(String a) {
+        System.out.println(a);
+    }
+    static void print(long a) {
+        System.out.println(a);
     }
     public static void solve()
     {
@@ -38,9 +57,9 @@ public class Main {
 	String st = sc.next();
         int arr[] = nextArray(n);
     }
-	public static void main (String[] args) {
-		int t = sc.nextInt();
-		while(t-->0)
-		    solve();
-	}
+    public static void main (String[] args) {
+	int t = sc.nextInt();
+	for(int i=1;i<=t;i++)
+	    solve();
+    }
 }
