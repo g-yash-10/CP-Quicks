@@ -21,12 +21,22 @@ public class Main {
             return 1;
         }
     }
+    static int power(int a, int b) {
+        int result = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                result = (int) ((long) result * a % mod);
+            }
+            a = (int) ((long) a * a % mod);
+            b >>= 1;
+        }
+        return result;
+    }
     static int gcd(int a, int b){
       if (b == 0)
         return a;
       return gcd(b, a % b);
     }
-    static Scanner sc = new Scanner(System.in);
     static int[] nextArray(int n) {
     	int arr[] = new int[n];
 	for(int i=0;i<n;i++)	arr[i] = sc.nextInt();
@@ -56,6 +66,8 @@ public class Main {
     static void print(long a) {
         System.out.println(a);
     }
+    static Scanner sc = new Scanner(System.in);
+    static int mod = 998244353;
     public static void solve()
     {
         int n = sc.nextInt(); 
