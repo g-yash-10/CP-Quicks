@@ -45,42 +45,39 @@ static long binomialCoeff(int n, int k)
         return res;
     }
     
-    
-    static int lower_bound(int array[], int key)
+    public static int lower_bound (long[] arr, long num)
     {
-        // Initialize starting index and
-        // ending index
-        int low = 0, high = array.length;
-        int mid;
- 
-        // Till high does not crosses low
-        while (low < high) {
- 
-            // Find the index of the middle element
-            mid = low + (high - low) / 2;
- 
-            // If key is less than or equal
-            // to array[mid], then find in
-            // left subarray
-            if (key <= array[mid]) {
-                high = mid;
+        int n = arr.length, low = 0, high = n - 1, ans = n - 1;
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            if (arr[mid] >= num)
+            {
+                ans = mid;
+                high = mid - 1;
             }
- 
-            // If key is greater than array[mid],
-            // then find in right subarray
-            else {
- 
+            else
+            {
                 low = mid + 1;
             }
         }
- 
-        // If key is greater than last element which is
-        // array[n-1] then lower bound
-        // does not exists in the array
-        if (low < array.length && array[low] < key) {
-            low++;
+        return ans;
+    }
+    public static int upper_bound (long[] arr, long num)
+    {
+        int n = arr.length, low = 0, high = n - 1, ans = 0;
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            if (arr[mid] <= num)
+            {
+                ans = mid;
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid - 1;
+            }
         }
- 
-        // Returning the lower_bound index
-        return low;
+        return ans;
     }
