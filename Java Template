@@ -21,6 +21,36 @@ public class Main {
             return 1;
         }
     }
+	public static long ModAdd (long x, long y, long mod)
+    {
+        return ((x % mod) + (y % mod)) % mod;
+    }
+    public static long ModSub (long x, long y, long mod)
+    {
+        return ((x % mod) - (y % mod) + mod) % mod;
+    }
+    public static long ModMul (long x, long y, long mod)
+    {
+        return ((x % mod) * (y % mod)) % mod;
+    }
+    public static long ModInv (long num, long mod)
+    {
+        return modpower(num, mod - 2, mod);
+    }
+    public static long nCrMod (long n, long r, long mod, long[] fact)
+    {
+        if (n < r)
+        {
+            return 0;
+        }
+        if (r == 0)
+        {
+            return 1;
+        }
+        long num = fact[(int)n];
+        long den = ModMul (ModInv (fact[(int)r], mod), ModInv(fact[(int)(n - r)], mod), mod);
+        return ModMul (num, den, mod);
+    }
      static long modpower(long x, long y, long p)
      {
       long res = 1; // Initialize result
@@ -95,17 +125,31 @@ public class Main {
         System.out.println(a);
     }
     static Scanner sc = new Scanner(System.in);
-    static int mod = 998244353;
-    public static void solve()
-    {
-        int n = sc.nextInt(); 
-	String s = sc.next();
-        int arr[] = nextArray(n);
+    public static void util() {
+	// long pow2[] = new long[(int)1e6 + 1];
+            // pow2[0] = 1;
+            // for (int i=1;i<=(int)1e6;i++)
+            // {
+            //     pow2[i] = ModMul (pow2[i-1], 2, mod);
+            // }
+            // long fact[] = new long[(int)1e6 + 1];
+            // fact[0] = 1;
+            // for (int i=1;i<=(int)1e6;i++)
+            // {
+            //     fact[i] = ModMul (fact[i-1], i, mod);
+            // }
     }
     public static void main (String[] args) {
 	int t = 1;
 	t = sc.nextInt();
 	for(int i=1;i<=t;i++)
 	    solve();
+    }
+    static int mod = 998244353;
+    public static void solve()
+    {
+        int n = sc.nextInt(); 
+	String s = sc.next();
+        int arr[] = nextArray(n);
     }
 }
