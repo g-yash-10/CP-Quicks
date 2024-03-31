@@ -149,7 +149,12 @@ public class Main {
     public static void solve()
     {
         int n = sc.nextInt(); 
-	String s = sc.next();
+	// int k = sc.nextInt(); 
+	// int x = sc.nextInt(); 
+	// String s = sc.next();
+	// Map<Integer, Integer> map = new HashMap();
+	// Set<Integer> set = new HashSet();
+	// map.put(x, map.getOrDefault(x, 0) + 1);
         int arr[] = nextArray(n);
     }
 }
